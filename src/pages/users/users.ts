@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { User } from '../../models/user';
+
+import {  GithubUsersProvider } from '../../providers/github-users/github-users'
+
 /**
  * Generated class for the UsersPage page.
  *
@@ -14,12 +18,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'users.html',
 })
 export class UsersPage {
+  users: User[]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private githubUsers: GithubUsersProvider) {
+    githubUsers.load().subscribe(users => {
+      console.log(users)
+    })
   }
 
-  ionViewDidLoad() {
-    console.log('Hello UsersPage');
-  }
 
 }
