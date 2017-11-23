@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { Http } from '@angular/http';
 
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
@@ -17,9 +18,11 @@ import { GithubUsersProvider } from '../providers/github-users/github-users';
     UsersPage,
     ReposPage,
     OrganisationsPage
+    
   ],
   imports: [
     BrowserModule,
+    Http,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
