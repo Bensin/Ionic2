@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { User } from '../../models/user';
 
-import {  GithubUsersProvider } from '../../providers/github-users/github-users'
+import {  GithubUsersProvider } from '../../providers/github-users/github-users';
+import { UserDetailsPage } from '../user-details/user-details';
 
 /**
  * Generated class for the UsersPage page.
@@ -20,11 +21,15 @@ import {  GithubUsersProvider } from '../../providers/github-users/github-users'
 export class UsersPage {
   users: User[]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private githubUsers: GithubUsersProvider) {
+  constructor(public navCtrl: NavController, private githubUsers: GithubUsersProvider) {
     githubUsers.load().subscribe(users => {
-      console.log(users)
+      this.users = users;
     })
   }
 
+
+   goToDetails(login:string){
+     this.navCtrl.push(UserDetailsPage,{login});
+   }
 
 }
