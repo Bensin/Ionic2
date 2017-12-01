@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { User } from '../../models/user';
 
-import {  GithubUsersProvider } from '../../providers/github-users/github-users';
+import { GithubUsersProvider } from '../../providers/github-users/github-users';
 import { UserDetailsPage } from '../user-details/user-details';
 
 /**
@@ -30,19 +30,19 @@ export class UsersPage {
 
   }
 
-   goToDetails(login:string){
-     this.navCtrl.push(UserDetailsPage,{login});
-   }
+  goToDetails(login: string) {
+    this.navCtrl.push(UserDetailsPage, { login });
+  }
 
-   search(searchEvent){
-     let term  = searchEvent.target.value;
-     if(term.trim()==='' || term.trim().length<3){
-        this.users = this.originalUsers;
-     }else{
-      this.githubUsers.searchUsers(term).subscribe(users =>{
+  search(searchEvent) {
+    let term = searchEvent.target.value;
+    if (term.trim() === '' || term.trim().length < 3) {
+      this.users = this.originalUsers;
+    } else {
+      this.githubUsers.searchUsers(term).subscribe(users => {
         this.users = users;
-   });
-     }
-   }
+      });
+    }
+  }
 
 }
