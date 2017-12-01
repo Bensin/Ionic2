@@ -19,11 +19,11 @@ import { GithubUsersProvider } from '../../providers/github-users/github-users';
 export class UserDetailsPage {
   user: User;
   login: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public githubUser:GithubUsersProvider) {
     this.login = this.navParams.get('login');
-    GithubUsersProvider.loadDetails(this.login).subscribe(user => {
+    githubUser.loadDetails(this.login).subscribe(user => {
       this.user = user;
-      console.log(user)
+      //console.log(user)
     })
   }
 
